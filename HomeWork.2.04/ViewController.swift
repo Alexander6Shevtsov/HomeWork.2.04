@@ -21,9 +21,10 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        colorsView.layer.cornerRadius = 20
+        colorsView.layer.cornerRadius = 20 // скругление
         setColor()
         
+        // получить String из слайдеров
         redLabel.text = string(from: redSlider)
         greenLabel.text = string(from: greenSlider)
         blueLabel.text = string(from: blueSlider)
@@ -41,6 +42,7 @@ final class ViewController: UIViewController {
         }
     }
     
+    // начальное значение для цвета
     private func setColor() {
         colorsView.backgroundColor = UIColor(
             red: redSlider.value.cgFloat(),
@@ -50,13 +52,15 @@ final class ViewController: UIViewController {
         )
     }
     
+    // приводим Double из слайдеров к String методом DateFormatter
     private func string(from slider: UISlider) -> String {
         String(format: "%.2f", slider.value)
     }
 }
 
+// расширяем тип Float
 extension Float {
     func cgFloat() -> CGFloat {
-        CGFloat(self)
+        CGFloat(self) // self значит что мы инициализируем самим типом Float
     }
 }
